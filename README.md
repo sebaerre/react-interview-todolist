@@ -1,15 +1,60 @@
+# Todo List App
 
-# react-interview
+A todo list manager built with React 19 and TypeScript. The app communicates with a backend API to manage multiple named todo lists and their items.
 
-This is a simple React application using Vite as the build tool. Candidates are expected to build a Todo List UI by consuming the provided API. The scaffold includes basic setup and configurations to get started quickly.
+## Features
 
-### Installation
+- Create, rename, and delete todo lists
+- Add, rename, check off, and delete todo items
+- Animated checkbox and task reordering via Framer Motion
+- "Complete all" button streams progress from the server via NDJSON
+- Progress bar and done/total counters per list
+- Toast notifications for mutations (success and error)
 
-This project provides a development environment using **devContainers**. Open the repository in a devContainer using your preferred IDE (e.g., VS Code). The devContainer will have all dependencies pre-installed.
+## Tech Stack
 
-## Contact
+| Layer | Library |
+|---|---|
+| UI | React 19 + TypeScript ~5.7 |
+| Styling | Tailwind CSS v4 (token-based, no config file) |
+| Server state | TanStack React Query v5 |
+| Animations | Framer Motion v12 |
+| Notifications | Sonner |
+| Build | Vite 6 + SWC |
+| Unit tests | Vitest + Testing Library |
+| E2E tests | Playwright |
 
-- Martín Fernández (mfernandez@crunchloop.io)
+## Running the App
+
+The frontend proxies `/api` to `http://host.docker.internal:3000`, so a backend must be running on port 3000 before starting the dev server.
+
+```bash
+npm install
+npm run dev          # starts Vite on http://localhost:5173
+```
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start dev server (port 5173) |
+| `npm run build` | Type-check and build for production |
+| `npm run test:unit` | Run Vitest unit tests |
+| `npm run test:unit:watch` | Vitest in watch mode |
+| `npm run test:unit:coverage` | Unit tests with coverage report |
+| `npm run test` | Run Playwright e2e tests |
+| `npm run test:ui` | Playwright UI mode (port 3333) |
+| `npm run lint` | ESLint |
+
+## DevContainer
+
+Open the repo in VS Code and select **Reopen in Container**. The devcontainer:
+
+- Base image: `mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm`
+- Runs `npm install` and installs the Playwright Chromium browser on creation (`postCreate.sh`)
+- Starts the Vite dev server automatically on container start (`npm run dev -- --host`)
+- Forwards port **5173** (Vite, opens browser automatically) and **3333** (Playwright UI)
+- Installs the **Claude Code** VS Code extension
 
 ## About Crunchloop
 
