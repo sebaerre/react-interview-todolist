@@ -1,8 +1,22 @@
 {
-	"name": "Node.js & TypeScript",
-	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
-	"postCreateCommand": [
-		"bash",
-		"../.devcontainer/postCreate.sh"
-	]
+  "name": "Frontend",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+  "postCreateCommand": ["bash", ".devcontainer/postCreate.sh"],
+  "postStartCommand": "npm run dev -- --host",
+  "customizations": {
+    "vscode": {
+      "extensions": ["anthropic.claude-code"]
+    }
+  },
+  "forwardPorts": [5173, 3333],
+  "portsAttributes": {
+    "5173": {
+      "label": "Vite Dev Server",
+      "onAutoForward": "openBrowser"
+    },
+    "3333": {
+      "label": "Playwright UI",
+      "onAutoForward": "openBrowser"
+    }
+  }
 }
