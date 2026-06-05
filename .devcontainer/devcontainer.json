@@ -1,7 +1,7 @@
 {
   "name": "Frontend",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
-  "postCreateCommand": ["bash", ".devcontainer/postCreate.sh"],
+  "postCreateCommand": "npm install && npx playwright install chromium && npx playwright install-deps chromium",
   "postStartCommand": "npm run dev -- --host",
   "customizations": {
     "vscode": {
