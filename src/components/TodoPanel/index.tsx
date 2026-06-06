@@ -64,7 +64,7 @@ export const TodoPanel = ({ listId }: Props) => {
         total={total}
       />
       <div className="flex gap-4">
-        <div className="flex-1 overflow-y-auto overflow-x-hidden w-1/2 border-x border-t ml-5 shadow-md shadow-black h-fit max-h-100 border-panel-divider">
+        <div className="flex-1 overflow-y-auto overflow-x-hidden w-1/2 border-x border-t ml-5 shadow-md shadow-black h-fit max-h-190 border-panel-divider">
           <TodoItemsList todoItems={sortedItems} listId={listId} />
           <AddTodoItem listId={listId} />
         </div>
